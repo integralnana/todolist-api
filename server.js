@@ -6,14 +6,15 @@ const todosRoutes = require("./routes/todos");
 const app = express();
 app.use(
   cors({
-    origin: "*",
+    origin: "https://todolist-frontend-ashen-theta.vercel.app",
+    credentials: true
   })
 );
 app.use(bodyParser.json());
 
 app.use("/api/todos", todosRoutes);
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`Running...`);
+  console.log(`Running on port ${PORT}`);
 });
